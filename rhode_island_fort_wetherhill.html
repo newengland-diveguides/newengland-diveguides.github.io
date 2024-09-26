@@ -99,6 +99,36 @@
 						<div class="inner">
 							<h1>What you can see</h1>
 							<span class="image main"><img src="images/fort_wetherhill.jpg" alt="" /></span>
+							<body class>
+								<div id="map" style="width: 1000px; height: 600px;" ></div>
+								<script>
+									// Using leaflet.js to pan and zoom a big image.
+									var map = L.map('map', {
+									minZoom: 0,
+									maxZoom: 4,
+									center: [0, 0],
+									zoom: 0, //start zoom at 1
+									maxBoundsViscosity: 1,
+									zoomSnap:1,
+									zoomDelta:1,
+									crs: L.CRS.Simple,
+									wheelPxPerZoomLevel: 60,
+	
+									});
+	
+									
+									//zoom 4 full size image is 4608px * 3456 px
+									//zoom 3 2304 * 1728
+									//zoom 2 1152 * 864
+									//zoom 1 576 * 432
+								
+									var image= L.imageOverlay("DIVE_GUIDE.pdf", [[0,0],[360,480]]); //initial size at zoom 1 )
+									image.addTo(map);
+									// tell leaflet that the map is exactly as big as the image
+									map.setMaxBounds(new L.LatLngBounds([10,10], [360,480]));  // prevent panning outside the image area.
+									//Note the viscosity setting keeps the image from being dragged outside this 								
+								</script>
+							</body>
 						</div>
 					</div>
 
