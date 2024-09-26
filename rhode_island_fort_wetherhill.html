@@ -10,6 +10,8 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="/leaflet/leaflet.css" />
+		<script src="/leaflet/leaflet.js"></script>
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
@@ -54,7 +56,7 @@
 						<div class="inner">
 							<h1>Fort Wetherhill</h1>
 							<span class="image main"><img src="images/fort_wetherhill.jpg" style="max-width: 500px; max-height: 400px;" alt="" /></span>
-							<p><span class="image left"><img src="images/ft_wetherhill_map.jpg" alt="" /></span> Image from google maps</p>
+							<p><span class="image left"><img src="images/ft_wetherhill_map.jpg" alt="" /></span> (Image from google maps)</p>
 							<p>The 2 sites can be categorized into Beginner (West Cove), Intermediate (East Cove) </p>
 							<p>Visibility averages around 15'</p>
 							<p>The site hosts numerous invertebrate species and fishlife (Gulf Stream orphans)</p>
@@ -63,11 +65,37 @@
 						</div>
 						<div class="inner">
 							<h1>Dive Map</h1>
-							<span class="image main"><img src="images/fort_wetherhill.jpg" alt="" /></span>
-							<p>Donec eget ex magna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fergiat. Pellentesque in mi eu massa lacinia malesuada et a elit. Donec urna ex, lacinia in purus ac, pretium pulvinar mauris. Curabitur sapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique.</p>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel venenatis mauris vehicula hendrerit.</p>
-							<p>Interdum et malesuada fames ac ante ipsum primis in faucibus. Pellentesque venenatis dolor imperdiet dolor mattis sagittis. Praesent rutrum sem diam, vitae egestas enim auctor sit amet. Pellentesque leo mauris, consectetur id ipsum sit amet, fersapien risus, commodo eget turpis at, elementum convallis elit. Pellentesque enim turpis, hendrerit tristique lorem ipsum dolor.</p>
 						</div>
+						<body class>
+							<div id="map" style="width: 360px; height: 480px;" ></div>
+							<script>
+								// Using leaflet.js to pan and zoom a big image.
+								var map = L.map('map', {
+								minZoom: 0,
+								maxZoom: 4,
+								center: [0, 0],
+								zoom: 0, //start zoom at 1
+								maxBoundsViscosity: 1,
+								zoomSnap:1,
+								zoomDelta:1,
+								crs: L.CRS.Simple,
+								wheelPxPerZoomLevel: 60,
+
+								});
+
+								
+								//zoom 4 full size image is 4608px * 3456 px
+								//zoom 3 2304 * 1728
+								//zoom 2 1152 * 864
+								//zoom 1 576 * 432
+							
+								var image= L.imageOverlay("images/fort_wetherhill.jpg", [[0,0],[360,480]]); //initial size at zoom 1 )
+								image.addTo(map);
+								// tell leaflet that the map is exactly as big as the image
+								map.setMaxBounds(new L.LatLngBounds([0,0], [360,480]));  // prevent panning outside the image area.
+								//Note the viscosity setting keeps the image from being dragged outside this 								
+							</script>
+						</body>
 						<div class="inner">
 							<h1>What you can see</h1>
 							<span class="image main"><img src="images/fort_wetherhill.jpg" alt="" /></span>
