@@ -92,7 +92,7 @@
 								var image= L.imageOverlay("images/fort_wetherhill.jpg", [[0,0],[360,480]]); //initial size at zoom 1 )
 								image.addTo(map);
 								// tell leaflet that the map is exactly as big as the image
-								map.setMaxBounds(new L.LatLngBounds([0,0], [360,480]));  // prevent panning outside the image area.
+								map.setMaxBounds(new L.LatLngBounds([10,10], [360,480]));  // prevent panning outside the image area.
 								//Note the viscosity setting keeps the image from being dragged outside this 								
 							</script>
 						</body>
