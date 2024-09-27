@@ -54,8 +54,10 @@
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-							<h1>Fort Wetherhill</h1>
-							<span class="image main"><img src="images/fort_wetherhill.jpg" style="max-width: 500px; max-height: 400px;" alt="" /></span>
+							<h1>Fort Wetherill</h1>
+							<center>
+							<span class="image main"><img src="images/fort_wetherhill_cropped.jpg" style="max-width: 1000px; max-height: 750px;" alt="" /></span>
+						</center>
 							<p><span class="image left"><img src="images/ft_wetherhill_map.jpg" alt="" /></span> (Image from google maps)</p>
 							<p>The 2 sites can be categorized into Beginner (West Cove), Intermediate (East Cove) </p>
 							<p>Visibility averages around 15'</p>
@@ -66,8 +68,9 @@
 						<div class="inner">
 							<h1>Dive Map</h1>
 						</div>
+						<center>
 						<body class>
-							<div id="map" style="width: 1000px; height: 600px;" ></div>
+							<div id="map" style="width: 500px; height: 400px;" ></div>
 							<script>
 								// Using leaflet.js to pan and zoom a big image.
 								var map = L.map('map', {
@@ -89,13 +92,14 @@
 								//zoom 2 1152 * 864
 								//zoom 1 576 * 432
 							
-								var image= L.imageOverlay("images/Layout.png", [[0,0],[360,480]]); //initial size at zoom 1 )
+								var image= L.imageOverlay("images/Layout.png", [[0,0],[360,360]]); //initial size at zoom 1 )
 								image.addTo(map);
 								// tell leaflet that the map is exactly as big as the image
-								map.setMaxBounds(new L.LatLngBounds([10,10], [360,480]));  // prevent panning outside the image area.
+								map.setMaxBounds(new L.LatLngBounds([10,10], [360,360]));  // prevent panning outside the image area.
 								//Note the viscosity setting keeps the image from being dragged outside this 								
 							</script>
 						</body>
+					</center>
 						<div class="inner">
 							<h1>What you can see</h1>
 							<span class="image main"><img src="images/what_you_can_see_one.jpg" alt="" /></span>
